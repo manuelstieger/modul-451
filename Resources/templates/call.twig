@@ -1,0 +1,22 @@
+{% include "header.twig" %}
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Call person</h1>
+            {% if data.person|length %}
+                <h3>called person</h3>
+                {% for person in data %}
+                    {{ person.firstname }}<br />
+                    {{ person.lastname }}<br />
+                    {{ person.age }}
+                {% endfor %}
+            {% endif %}
+            <h3>Waiting queue</h3>
+            <p>Number of persons left: {{ data.length }}</p>
+            <form action="/index.php" method="post">
+                <input type="hidden" name="view" value="call">
+                <input type="hidden" name="callPerson" value="1">
+                <input type="submit" class="btn btn-default" value="call">
+            </form>
+        </div>
+    </div>
+{% include "footer.twig" %}

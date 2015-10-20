@@ -1,0 +1,24 @@
+{% include "header.twig" %}
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Queue person</h1>
+            <form action="/index.php" method="post">
+                <input type="hidden" name="view" value="queue">
+                <input type="hidden" name="queuePerson" value="1">
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age" name="age" value="" required>
+                </div>
+                <input type="submit" class="btn btn-default" value="submit">
+            </form>
+        </div>
+    </div>
+{% include "footer.twig" %}
