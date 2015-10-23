@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "firstname": "Manuel",
+        "lastname": "Stieger",
+        "age": 26
+    }
+]
