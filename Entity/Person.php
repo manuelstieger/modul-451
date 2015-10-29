@@ -54,7 +54,13 @@ class Person {
      */
     public function setLastname($lastname)
     {
-        $this->lastname = $lastname;
+        $lastname = trim($lastname);
+        $lastname = stripcslashes($lastname);
+        if(preg_match_all("/([ \\x{00c0}-\\x{01ff}-zA-Z\\'\\-]{1,30})\\w+/ui", $lastname)) {
+            if(!is_numeric($lastname)) {
+                $this->lastname = $lastname;
+            }
+        }
         return $this;
     }
 

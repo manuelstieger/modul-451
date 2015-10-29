@@ -9,6 +9,9 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Class main
  */
 class main {
+
+    private $error = false;
+
     function queuePerson()
     {
         $queue = new Entity\Queue();
@@ -16,6 +19,7 @@ class main {
         $queue->readFile();
 
         $person = new Entity\Person();
+
         if($_REQUEST['queuePerson']) {
             $person->setFirstname($_POST['firstname']);
             $person->setLastname($_POST['lastname']);
@@ -25,7 +29,12 @@ class main {
 
             $queue->writeFile();
         }
-        $this->show('queue.twig', array());
+
+        $data = array(
+            "error" => $this->error
+        );
+
+        $this->show('queue.twig', $data);
     }
 
     function callPerson()

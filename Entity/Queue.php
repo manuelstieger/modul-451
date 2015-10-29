@@ -10,7 +10,7 @@ class Queue {
     /**
      * @var array queue
      */
-    public $queue;
+    private $queue;
 
     /**
      * @var string jsonFile
@@ -52,7 +52,9 @@ class Queue {
     {
         foreach ( $this->queue as $i => $item )
         {
-            if ($item['firstname'] == $person['firstname'] && $item['lastname'] == $person['lastname'] && $item['age'] == $person['age'])
+            if ($item->firstname == $person->firstname
+                && $item->lastname == $person->lastname
+                && $item->age == $person->age)
             {
                 unset($this->queue[$i]);
             }
