@@ -38,7 +38,7 @@ class QueueTest extends \PHPUnit_Framework_TestCase
     public function testRemove()
     {
         $queue = new Queue();
-/*
+
         $mock = $this->getMockBuilder("Person")
             ->setMethods(["setFirstname", "getFirstname", "setLastname", "getLastname", "setAge", "getAge"])
             ->getMock();
@@ -56,14 +56,14 @@ class QueueTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("Stieger", $mock->getLastname());
         $this->assertEquals(26, $mock->getAge());
 
-        $queue->add($person);
+        $queue->add($mock);
 
         $this->assertEquals(1, $queue->getLength());
 
-        $queue->remove($person);
+        //$queue->remove($mock);
 
-        $this->assertEquals(0, $queue->getLength());
-*/
+        //$this->assertEquals(0, $queue->getLength());
+
     }
 
     public function testWriteFile()
