@@ -3,9 +3,6 @@
         <div class="col-md-6 col-md-offset-3">
             <h1>Queue person</h1>
             <form action="/index.php" method="post">
-                {% if data.error %}
-                    <span style="color: red;">Please verify your data</span>
-                {% endif %}
                 <input type="hidden" name="view" value="queue">
                 <input type="hidden" name="queuePerson" value="1">
                 <div class="form-group">
