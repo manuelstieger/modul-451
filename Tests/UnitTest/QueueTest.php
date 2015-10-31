@@ -70,13 +70,24 @@ class QueueTest extends \PHPUnit_Framework_TestCase
     {
         $queue = new Queue();
 
-        $person = array(
-            "firstname" => "Manuel",
-            "lastname" => "Stieger",
-            "age" => 26
-        );
+        $mock = $this->getMockBuilder("Person")
+            ->setMethods(["setFirstname", "getFirstname", "setLastname", "getLastname", "setAge", "getAge"])
+            ->getMock();
 
-        $queue->add($person);
+        $mock->method("setFirstname")->will($this->returnValue("Manuel"));
+        $mock->method("getFirstname")->will($this->returnValue($mock->setFirstname()));
+
+        $mock->method("setLastname")->will($this->returnValue("Stieger"));
+        $mock->method("getLastname")->will($this->returnValue($mock->setLastname()));
+
+        $mock->method("setAge")->will($this->returnValue(26));
+        $mock->method("getAge")->will($this->returnValue($mock->setAge()));
+
+        $this->assertEquals("Manuel", $mock->getFirstname());
+        $this->assertEquals("Stieger", $mock->getLastname());
+        $this->assertEquals(26, $mock->getAge());
+
+        $queue->add($mock);
 
         $queue->writeFile();
     }
